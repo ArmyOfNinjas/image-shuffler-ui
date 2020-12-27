@@ -1,0 +1,7 @@
+.appHeader {
+  display: grid;
+  place-items: center;
+  height: 10vh;
+  width: 100%;
+  background-color: rgb(138, 90, 90);
+}
