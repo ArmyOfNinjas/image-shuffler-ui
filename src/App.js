@@ -6,11 +6,13 @@ import { selectUser } from "./features/login/userSlice";
 import Login from './features/login/Login';
 import { auth } from './features/firebase';
 import { login, logout } from "./features/login/userSlice"
+import Grid from './features/grid/Grid';
+import { selectUrls } from './features/appHeader/urlSlice';
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const [selectedState, setSelectedState] = useState([])
+  const imgUrls = useSelector(selectUrls);
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -29,15 +31,16 @@ function App() {
   }, [dispatch])
 
   useEffect(() => {
-    console.log(selectedState)
-  }, [selectedState])
+    console.log(imgUrls)
+  }, [imgUrls])
 
   return (
     <div className="app">
       {user ? (
         <>
-          <AppHeader className="appHeader" setSelectedState={setSelectedState}></AppHeader>
+          <AppHeader className="appHeader"></AppHeader>
           <h1>Image Shuffler App</h1>
+          <Grid className="imageGrid"></Grid>
         </>
       ) : (
           <Login />

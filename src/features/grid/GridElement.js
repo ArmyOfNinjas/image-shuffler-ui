@@ -3,24 +3,13 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../login/userSlice';
 import "./GridElement.css"
 
-function GridElement(image) {
+function GridElement(imageUrl) {
     const user = useSelector(selectUser);
-
-    const fileDownloadHandler = () => {
-        const formData = new FormData();
-        formData.append("image", selectedFiles, selectedFiles[0].name)
-
-        // paste API url here
-        axios.fetch("url", user, image)
-            .then(res => { console.log(res); return res; },
-                error => { console.log(error) }
-            );
-    }
-
+    console.log(imageUrl.imageUrl)
     return (
         <div className="gridElement">
-
-            <img src={fileDownloadHandler} className="image" alt="" />
+            {/* <h3>Grid Element</h3> */}
+            <img src={imageUrl.imageUrl} className="image" alt="" />
         </div>
     );
 }

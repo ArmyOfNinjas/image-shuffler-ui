@@ -1,0 +1,18 @@
+.gridElement {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  background-color: green;
+  object-fit: cover;
+}
+
+.image {
+  border-radius: 10px;
+  display: flex;
+  object-fit: cover;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}

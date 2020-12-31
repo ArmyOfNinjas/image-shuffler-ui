@@ -1,15 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectFiles } from "../appHeader/filesSlice"
+import { selectUrls } from '../appHeader/urlSlice';
 import GridElement from './GridElement';
+import "./Grid.css"
 
-function Grid(props) {
-    const selectedFiles = useSelector(selectFiles);
-
+function Grid() {
+    const imgUrls = useSelector(selectUrls);
+    // console.log(imgUrls)
     return (
         <div className="grid">
-            {selectedFiles.map((imageName) => (
-                <GridElement image={imageName} />
+            {imgUrls.map((imageFile) => (
+                <GridElement className="gridElement" imageUrl={imageFile} key={imageFile} />
             ))}
         </div>
     );
