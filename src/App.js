@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import AppHeader from './features/appHeader/AppHeader';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +10,7 @@ import { login, logout } from "./features/login/userSlice"
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [selectedState, setSelectedState] = useState([])
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -27,14 +28,15 @@ function App() {
     });
   }, [dispatch])
 
+  useEffect(() => {
+    console.log(selectedState)
+  }, [selectedState])
+
   return (
     <div className="app">
-      {/* <AppHeader className="appHeader"></AppHeader>
-      <h1>Image Shuffler App</h1> */}
-
       {user ? (
         <>
-          <AppHeader className="appHeader"></AppHeader>
+          <AppHeader className="appHeader" setSelectedState={setSelectedState}></AppHeader>
           <h1>Image Shuffler App</h1>
         </>
       ) : (

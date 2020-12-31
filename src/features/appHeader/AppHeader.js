@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./AppHeader.css";
 import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux';
+import { setSelectedFiles } from "./filesSlice"
+import { selectFiles } from "./filesSlice"
 
-function AppHeader(props) {
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [selectedFiles, setSelectedFiles] = useState([]);
+function AppHeader({ setSelectedState }) {
+    const dispatch = useDispatch()
+    const selectedFiles = useSelector(selectFiles);
 
     const fileSelectedHandler = event => {
-        setSelectedFiles(event.target.files);
+        if (event.target.files.length > 0) {
+            setSelectedState(event.target.files)
+            // dispatch(setSelectedFiles(event.target.files));
+        }
     }
+
 
     const fileUploadHandler = () => {
         const formData = new FormData();
