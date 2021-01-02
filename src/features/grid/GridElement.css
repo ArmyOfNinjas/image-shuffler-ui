@@ -1,5 +1,5 @@
 .gridElement {
-  width: 33.3333%;
+  width: 33.33333333%;
   background-color: rgb(105, 100, 100);
   object-fit: cover;
   /* border: solid rgb(36, 33, 33) 1px; */
@@ -13,9 +13,9 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 98%;
-  width: 98%;
-  margin: 1%;
+  height: 99%;
+  width: 99%;
+  margin: 0.5%;
 
   position: absolute;
   top: 0;

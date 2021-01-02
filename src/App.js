@@ -39,7 +39,6 @@ function App() {
       {user ? (
         <>
           <AppHeader className="appHeader"></AppHeader>
-          <h1>Image Shuffler App</h1>
           <Grid className="imageGrid"></Grid>
         </>
       ) : (

@@ -11,11 +11,15 @@ export const urlSlice = createSlice({
             console.log(action.payload)
             state.value = [...state.value, action.payload];
         },
+        resetSelectedUrls: (state, action) => {
+            console.log("resetting urls:")
+            state.value = action.payload;
+        },
     },
 });
 
 
-export const { setSelectedUrls } = urlSlice.actions;
+export const { setSelectedUrls, resetSelectedUrls } = urlSlice.actions;
 
 export const selectUrls = (state) => state.urls.value;
 

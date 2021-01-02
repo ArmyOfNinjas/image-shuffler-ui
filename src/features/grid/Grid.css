@@ -1,9 +1,22 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  border: solid rgb(51, 49, 49) 1px;
+  border-radius: 5px;
+  width: 50%;
+  min-width: 400px;
+  min-height: 200px;
+  margin: 10px;
+  box-shadow: 1px 2px rgb(119, 109, 109);
+}
+
 .grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 800px;
   border: solid rgb(82, 74, 74) 1px;
-
-  width: 50%;
+  margin: 10px;
+  width: 98%;
 }
