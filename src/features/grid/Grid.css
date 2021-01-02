@@ -2,21 +2,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  max-width: 800px;
+  border: solid rgb(82, 74, 74) 1px;
+
+  width: 50%;
 }
-
-/* .gridElement {
-  width: 200px;
-  height: 200px;
-  border: 10px black;
-  background-color: green;
-} */
-
-/* .image {
-  display: flex;
-  place-items: center;
-  object-fit: contain;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-} */

@@ -9,6 +9,7 @@ function GridElement(imageUrl) {
     return (
         <div className="gridElement">
             {/* <h3>Grid Element</h3> */}
+            <div class="sixteen-by-nine aspect-ratio"></div>
             <img src={imageUrl.imageUrl} className="image" alt="" />
         </div>
     );

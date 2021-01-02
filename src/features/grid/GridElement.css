@@ -1,18 +1,29 @@
 .gridElement {
-  width: 200px;
-  height: 200px;
-  border-radius: 20px;
-  background-color: green;
+  width: 33.3333%;
+  background-color: rgb(105, 100, 100);
   object-fit: cover;
+  /* border: solid rgb(36, 33, 33) 1px; */
+  position: relative;
 }
 
 .image {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   display: flex;
   object-fit: cover;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
+  height: 98%;
+  width: 98%;
+  margin: 1%;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sixteen-by-nine.aspect-ratio {
+  padding-bottom: 100%;
 }
