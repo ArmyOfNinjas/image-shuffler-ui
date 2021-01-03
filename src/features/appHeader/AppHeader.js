@@ -13,21 +13,21 @@ function AppHeader() {
     const user = useSelector(selectUser);
     const [progress, setProgress] = useState(0);
 
-    const [selectedState, setSelectedState] = useState([])
+    const [selectedFiles, setSelectedFiles] = useState([])
 
     const fileSelectedHandler = event => {
         if (event.target.files.length > 0) {
-            setSelectedState([]);
+            setSelectedFiles([]);
             setProgress(0);
             dispatch(resetSelectedUrls([]))
-            setSelectedState(event.target.files);
+            setSelectedFiles(event.target.files);
         }
     }
 
     useEffect(() => {
-        console.log(selectedState)
+        console.log(selectedFiles)
         upload();
-    }, [selectedState])
+    }, [selectedFiles])
 
     useEffect(() => {
         if (progress === 99) setProgress(0);
@@ -38,8 +38,8 @@ function AppHeader() {
     }
 
     function upload() {
-        for (let i = 0; i < selectedState.length; i++) {
-            const image = selectedState[i]
+        for (let i = 0; i < selectedFiles.length; i++) {
+            const image = selectedFiles[i]
             const uploadTask = storage.ref(`images/${user.email}/${image.name}`).put(image);
             uploadTask.on(
                 'state_changed',

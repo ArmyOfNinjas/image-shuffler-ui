@@ -9,7 +9,7 @@ function Grid() {
     const imgUrls = useSelector(selectUrls);
     // console.log(imgUrls)
     return (
-        <div>
+        <div className="card-background">
             {imgUrls.length > 0 ? (
                 <div className="card">
                     <div className="grid">

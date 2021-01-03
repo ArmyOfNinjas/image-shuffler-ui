@@ -2,10 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 800px;
   border: solid rgb(199, 183, 183) 1px;
   border-radius: 5px;
-  width: 50%;
+  width: 40vw;
   min-width: 400px;
   min-height: 200px;
   margin: 10px;
