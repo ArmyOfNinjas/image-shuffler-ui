@@ -9,12 +9,18 @@ function Grid() {
     const imgUrls = useSelector(selectUrls);
     // console.log(imgUrls)
     return (
-        <div className="card">
-            <div className="grid">
-                {imgUrls.map((imageFile) => (
-                    <GridElement className="gridElement" imageUrl={imageFile} key={imageFile} />
-                ))}
-            </div>
+        <div>
+            {imgUrls.length > 0 ? (
+                <div className="card">
+                    <div className="grid">
+                        {imgUrls.map((imageFile) => (
+                            <GridElement className="gridElement" imageUrl={imageFile} key={imageFile} />
+                        ))}
+                    </div>
+                </div>
+            ) : (
+                    <div />
+                )}
         </div>
     );
 }

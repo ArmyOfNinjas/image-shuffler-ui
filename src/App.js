@@ -4,7 +4,7 @@ import AppHeader from './features/appHeader/AppHeader';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from "./features/login/userSlice";
 import Login from './features/login/Login';
-import { auth } from './features/firebase';
+import { auth } from './firebase';
 import { login, logout } from "./features/login/userSlice"
 import Grid from './features/grid/Grid';
 import { selectUrls } from './features/appHeader/urlSlice';

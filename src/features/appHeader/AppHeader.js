@@ -2,12 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import "./AppHeader.css";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
-import { setSelectedFiles } from "./filesSlice"
-import { selectFiles } from "./filesSlice"
 import { selectUrls, setSelectedUrls, resetSelectedUrls } from "./urlSlice"
-import { storage, db } from "../firebase"
+import { storage, db } from "../../firebase"
 import { selectUser } from "../login/userSlice";
-import firebase from "../firebase"
 import { Button } from "@material-ui/core"
 
 function AppHeader() {
