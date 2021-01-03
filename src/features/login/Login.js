@@ -16,7 +16,7 @@ function Login() {
             <div className="login_logo">
                 <img src={loginImg} className="login__img" alt="" />
             </div>
-            <Button onClick={signIn}>Sign In</Button>
+            <Button onClick={signIn}>Sign In with Google</Button>
         </div>
     );
 }

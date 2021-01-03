@@ -38,9 +38,12 @@ function AppHeader() {
     }
 
     function upload() {
+        const dateTime = new Date().toLocaleString();
+        // console.log(dateTime)
+
         for (let i = 0; i < selectedFiles.length; i++) {
             const image = selectedFiles[i]
-            const uploadTask = storage.ref(`images/${user.email}/${image.name}`).put(image);
+            const uploadTask = storage.ref(`images/${user.email}/${dateTime}/${image.name}`).put(image);
             uploadTask.on(
                 'state_changed',
                 (snapshot) => {
@@ -64,7 +67,7 @@ function AppHeader() {
     return (
         <div className="appHeader">
             <h2>Image Shuffler</h2>
-            <label for="file-upload" class="custom-file-upload">
+            <label htmlFor="file-upload" className="custom-file-upload">
                 Upload FIles...
             </label>
             <input

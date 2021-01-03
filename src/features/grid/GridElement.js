@@ -8,7 +8,7 @@ function GridElement(imageUrl) {
     console.log(imageUrl.imageUrl)
     return (
         <div className="gridElement">
-            <div class="sixteen-by-nine aspect-ratio"></div>
+            <div className="sixteen-by-nine aspect-ratio"></div>
             <img src={imageUrl.imageUrl} className="image" alt="" />
         </div>
     );
