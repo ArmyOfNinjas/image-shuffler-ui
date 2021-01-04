@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./AppHeader.css";
-import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUrls, setSelectedUrls, resetSelectedUrls } from "./urlSlice"
 import { storage, db } from "../../firebase"
@@ -17,7 +16,6 @@ function AppHeader() {
 
     const fileSelectedHandler = event => {
         if (event.target.files.length > 0) {
-            setSelectedFiles([]);
             setProgress(0);
             dispatch(resetSelectedUrls([]))
             setSelectedFiles(event.target.files);
@@ -39,7 +37,6 @@ function AppHeader() {
 
     function upload() {
         const dateTime = new Date().toLocaleString();
-        // console.log(dateTime)
 
         for (let i = 0; i < selectedFiles.length; i++) {
             const image = selectedFiles[i]
@@ -54,6 +51,8 @@ function AppHeader() {
                 () => {
                     storage
                         .ref('images')
+                        .child(user.email)
+                        .child(dateTime)
                         .child(image.name)
                         .getDownloadURL()
                         .then(url => {

@@ -18,12 +18,12 @@ export const filesSlice = createSlice({
     },
 });
 
-function getFields(input, field) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i)
-        output.push(input[i][field]);
-    return output;
-}
+// function getFields(input, field) {
+//     var output = [];
+//     for (var i = 0; i < input.length; ++i)
+//         output.push(input[i][field]);
+//     return output;
+// }
 
 export const { setSelectedFiles } = filesSlice.actions;
 

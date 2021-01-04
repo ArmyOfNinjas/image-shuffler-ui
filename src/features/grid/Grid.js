@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectFiles } from "../appHeader/filesSlice"
 import { selectUrls } from '../appHeader/urlSlice';
 import GridElement from './GridElement';
 import "./Grid.css"

@@ -30,9 +30,9 @@ function App() {
     });
   }, [dispatch])
 
-  useEffect(() => {
-    console.log(imgUrls)
-  }, [imgUrls])
+  // useEffect(() => {
+  //   console.log(imgUrls)
+  // }, [imgUrls])
 
   return (
     <div className="app">
