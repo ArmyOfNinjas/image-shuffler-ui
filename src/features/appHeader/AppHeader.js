@@ -6,14 +6,16 @@ import { storage, db } from "../../firebase";
 import { selectUser } from "../login/userSlice";
 import { Button } from "@material-ui/core";
 import axios from "axios";
+import { selectToken } from "../login/tokenSlice";
 
 function AppHeader() {
   const dispatch = useDispatch();
   const imgUrls = useSelector(selectUrls);
   const user = useSelector(selectUser);
   const [progress, setProgress] = useState(0);
-
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const token = useSelector(selectToken);
+  const [dateTime, setDateTime] = useState("");
 
   const fileSelectedHandler = (event) => {
     if (event.target.files.length > 0) {
@@ -37,7 +39,7 @@ function AppHeader() {
   };
 
   function upload() {
-    const dateTime = new Date().toLocaleString();
+    setDateTime(new Date().toLocaleString());
 
     for (let i = 0; i < selectedFiles.length; i++) {
       const image = selectedFiles[i];
@@ -72,14 +74,29 @@ function AppHeader() {
   }
 
   const handleApiRequest = () => {
-    axios
-      .post("/user", JSON.stringify(user))
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    };
+
+    const data = {
+      userEmail: user.email,
+      urls: imgUrls,
+      dateTime: dateTime,
+    };
+
+    console.log(data);
+
+    // axios
+    //   .post("APIUrl", JSON.stringify(data), {
+    //     headers: headers,
+    //   })
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
 
   return (
@@ -95,7 +112,7 @@ function AppHeader() {
         multiple
         onChange={fileSelectedHandler}
       />
-      {/* <button onClick={handleUpload}>Upload</button> */}
+      <button onClick={handleApiRequest}>Upload</button>
       <progress value={progress} max="100" />
     </div>
   );

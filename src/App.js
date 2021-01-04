@@ -8,12 +8,14 @@ import { auth } from "./firebase";
 import { login, logout } from "./features/login/userSlice";
 import Grid from "./features/grid/Grid";
 import { selectUrls } from "./features/appHeader/urlSlice";
+import { setToken, unsetToken } from "./features/login/tokenSlice";
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const imgUrls = useSelector(selectUrls);
   const [userData, setUserData] = useState(null);
+  // const token = useSelector(selectToken);
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -26,11 +28,13 @@ function App() {
             photo: authUser.photoURL,
             email: authUser.email,
             displayName: authUser.displayName,
-            accessToken: authUser.ya,
           })
         );
+        console.log(authUser.ya);
+        dispatch(setToken(authUser.ya));
       } else {
         dispatch(logout());
+        dispatch(unsetToken());
       }
     });
   }, [dispatch]);
@@ -39,9 +43,9 @@ function App() {
   //   console.log(imgUrls)
   // }, [imgUrls])
 
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
+  // useEffect(() => {
+  //   console.log(userData);
+  // }, [userData]);
 
   return (
     <div className="app">
