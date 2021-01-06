@@ -38,8 +38,12 @@ function AppHeader() {
     upload();
   };
 
+  useEffect(() => {
+    console.log(dateTime);
+  }, [dateTime]);
+
   function upload() {
-    setDateTime(new Date().toLocaleString());
+    setDateTime(new Date().toUTCString());
 
     for (let i = 0; i < selectedFiles.length; i++) {
       const image = selectedFiles[i];
@@ -86,17 +90,18 @@ function AppHeader() {
     };
 
     console.log(data);
+    console.log(JSON.stringify(data));
 
-    // axios
-    //   .post("APIUrl", JSON.stringify(data), {
-    //     headers: headers,
-    //   })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .post("https://localhost:44354/api/imageshuffle/", JSON.stringify(data), {
+        headers: headers,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
