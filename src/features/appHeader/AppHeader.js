@@ -43,7 +43,8 @@ function AppHeader() {
   }, [dateTime]);
 
   function upload() {
-    setDateTime(new Date().toUTCString());
+    const date = new Date().toUTCString();
+    setDateTime(date);
 
     for (let i = 0; i < selectedFiles.length; i++) {
       const image = selectedFiles[i];
@@ -75,6 +76,7 @@ function AppHeader() {
         }
       );
     }
+    // setDateTime("")
   }
 
   const handleApiRequest = () => {
@@ -83,9 +85,12 @@ function AppHeader() {
       Authorization: "Bearer " + token,
     };
 
+    const files = Array.from(selectedFiles);
+    let fileNames = files.map(a => a.name);
+
     const data = {
       userEmail: user.email,
-      urls: imgUrls,
+      fileNames: fileNames,
       dateTime: dateTime,
     };
 
@@ -117,7 +122,7 @@ function AppHeader() {
         multiple
         onChange={fileSelectedHandler}
       />
-      <button onClick={handleApiRequest}>Upload</button>
+      <button onClick={handleApiRequest}>Shuffle</button>
       <progress value={progress} max="100" />
     </div>
   );

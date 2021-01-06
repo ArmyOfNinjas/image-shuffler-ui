@@ -43,9 +43,9 @@ function App() {
   //   console.log(imgUrls)
   // }, [imgUrls])
 
-  // useEffect(() => {
-  //   console.log(userData);
-  // }, [userData]);
+  useEffect(() => {
+    console.log(userData);
+  }, [userData]);
 
   return (
     <div className="app">
@@ -55,8 +55,8 @@ function App() {
           <Grid className="imageGrid"></Grid>
         </>
       ) : (
-        <Login />
-      )}
+          <Login />
+        )}
     </div>
   );
 }
