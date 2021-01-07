@@ -34,9 +34,6 @@ function AppHeader() {
     if (progress === 99) setProgress(0);
   }, [progress]);
 
-  const handleUpload = () => {
-    upload();
-  };
 
   useEffect(() => {
     console.log(dateTime);
@@ -44,7 +41,7 @@ function AppHeader() {
 
   function upload() {
     const date = new Date().toUTCString();
-    setDateTime(date);
+    setDateTime("1");
 
     for (let i = 0; i < selectedFiles.length; i++) {
       const image = selectedFiles[i];
