@@ -30,7 +30,7 @@ function App() {
             displayName: authUser.displayName,
           })
         );
-        console.log(authUser.ya);
+        // console.log(authUser.ya);
         dispatch(setToken(authUser.ya));
       } else {
         dispatch(logout());
@@ -55,8 +55,8 @@ function App() {
           <Grid className="imageGrid"></Grid>
         </>
       ) : (
-          <Login />
-        )}
+        <Login />
+      )}
     </div>
   );
 }

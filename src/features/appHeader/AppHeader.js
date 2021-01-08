@@ -34,20 +34,20 @@ function AppHeader() {
     if (progress === 99) setProgress(0);
   }, [progress]);
 
-
   useEffect(() => {
-    console.log(dateTime);
+    console.log("dateTime state is : " + dateTime);
   }, [dateTime]);
 
   function upload() {
-    const date = new Date().toUTCString();
-    setDateTime("1");
+    let date = new Date().toUTCString();
+    setDateTime(date);
 
     for (let i = 0; i < selectedFiles.length; i++) {
       const image = selectedFiles[i];
       const uploadTask = storage
         .ref(`images/${user.email}/${dateTime}/${image.name}`)
         .put(image);
+      console.log("date after upload is : " + date);
       uploadTask.on(
         "state_changed",
         (snapshot) => {
@@ -67,12 +67,14 @@ function AppHeader() {
             .child(image.name)
             .getDownloadURL()
             .then((url) => {
+              setDateTime(dateTime);
               console.log(url);
               dispatch(setSelectedUrls(url));
             });
         }
       );
     }
+    console.log("date after upload 2 is : " + date);
     // setDateTime("")
   }
 
@@ -83,7 +85,7 @@ function AppHeader() {
     };
 
     const files = Array.from(selectedFiles);
-    let fileNames = files.map(a => a.name);
+    let fileNames = files.map((a) => a.name);
 
     const data = {
       userEmail: user.email,

@@ -7,7 +7,7 @@ export const tokenSlice = createSlice({
   },
   reducers: {
     setToken: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.value = action.payload;
     },
     unsetToken: (state) => {
