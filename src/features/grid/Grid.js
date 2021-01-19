@@ -6,14 +6,16 @@ import "./Grid.css"
 
 function Grid() {
     const imgUrls = useSelector(selectUrls);
-    // console.log(imgUrls)
+    imgUrls.forEach(element => {
+        // console.log(element)
+    });
     return (
         <div className="card-background">
             {imgUrls.length > 0 ? (
                 <div className="card">
                     <div className="grid">
-                        {imgUrls.map((imageFile) => (
-                            <GridElement className="gridElement" imageUrl={imageFile} key={imageFile} />
+                        {imgUrls.map((imageFile, i) => (
+                            <GridElement className="gridElement" imageUrl={imageFile} key={i} />
                         ))}
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import "./GridElement.css"
 
 function GridElement(imageUrl) {
     // const user = useSelector(selectUser);
-    // console.log(imageUrl.imageUrl)
+    // console.log(imageUrl)
     return (
         <div className="gridElement">
             <div className="sixteen-by-nine aspect-ratio"></div>
