@@ -11,12 +11,15 @@ export const fileNameSlice = createSlice({
             console.log(state.value)
         },
         resetFileNames: (state, action) => {
+            state.value = action.payload;
+        },
+        setFileNamesToZero: (state, action) => {
             state.value = [];
         },
     },
 });
 
-export const { setFileNames, resetFileNames } = fileNameSlice.actions;
+export const { setFileNames, resetFileNames, setFileNamesToZero } = fileNameSlice.actions;
 
 export const selectFileNames = (state) => state.fileNames.value;
 
