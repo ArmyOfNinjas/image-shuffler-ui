@@ -9,6 +9,7 @@ import { selectUser } from "../login/userSlice";
 import { selectToken } from "../login/tokenSlice";
 import axios from "axios";
 import { selectNamesUrls, setNamesUrls, resetNamesUrls } from "./nameUrlSlice";
+import { CircularProgress, Fade, LinearProgress } from "@material-ui/core";
 
 function AppHeader() {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ function AppHeader() {
   function upload() {
     let date = new Date().toUTCString();
     // setDateTime(date);
-    dispatch(setDate(date))
+    dispatch(setDate(date));
     let names = [];
 
     for (let i = 0; i < selectedFiles.length; i++) {
@@ -76,8 +77,8 @@ function AppHeader() {
             .getDownloadURL()
             .then((url) => {
               const name = image.name;
-              dispatch(setDate(dateTime))
-              dispatch(setNamesUrls({ name, url }))
+              dispatch(setDate(dateTime));
+              dispatch(setNamesUrls({ name, url }));
               // setDateTime(dateTime);
               // dispatch(setSelectedUrls(url));
               // dispatch(setNamesUrls({ "name": image.name, "url": url }))
@@ -111,9 +112,9 @@ function AppHeader() {
         headers: headers,
       })
       .then(async function (response) {
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise((r) => setTimeout(r, 2000));
         dispatch(setFileNames(response.data));
-        downloadImgUrls(response.data)
+        downloadImgUrls(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -121,13 +122,13 @@ function AppHeader() {
   };
 
   function downloadImgUrls(data) {
-    console.log(data)
-    dispatch(resetNamesUrls([]))
+    console.log(data);
+    dispatch(resetNamesUrls([]));
     let names = [];
     for (let i = 0; i < data.length; i++) {
       const image = data[i];
-      names.push(image)
-      console.log(image)
+      names.push(image);
+      console.log(image);
       storage
         .ref("images")
         .child(user.email)
@@ -139,30 +140,38 @@ function AppHeader() {
           // dispatch(setFileNames(image));
           // dispatch(setSelectedUrls(url));
           const name = image;
-          console.log(name)
-          dispatch(setNamesUrls({ name, url }))
+          console.log(name);
+          dispatch(setNamesUrls({ name, url }));
         });
     }
     dispatch(resetFileNames(names));
   }
 
-
-
   return (
     <div className="appHeader">
-      <h2>Image Shuffler</h2>
-      <label htmlFor="file-upload" className="custom-file-upload">
-        Upload FIles...
-      </label>
-      <input
-        id="file-upload"
-        style={{ display: "none" }}
-        type="file"
-        multiple
-        onChange={fileSelectedHandler}
-      />
-      <button onClick={handleApiRequest}>Shuffle</button>
-      <progress value={progress} max="100" />
+      <h1>Image Shuffler</h1>
+      <div className="appHeader__buttons">
+        {progress === 100 || progress === 0 ? (
+          <></>
+        ) : (
+          <CircularProgress value={progress} disableShrink />
+        )}
+
+        <label htmlFor="file-upload" className="custom-file-upload">
+          Upload FIles...
+        </label>
+        <input
+          id="file-upload"
+          style={{ display: "none" }}
+          type="file"
+          multiple
+          onChange={fileSelectedHandler}
+        />
+        <button onClick={handleApiRequest}>Shuffle</button>
+
+        {/* <LinearProgress variant="determinate" value={progress} /> */}
+        {/* <progress value={progress} max="100" /> */}
+      </div>
     </div>
   );
 }
